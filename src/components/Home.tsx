@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "./Search";
+import { causes } from "./causesList";
 // import CharityCard from "./CharityCard";
 
 export const apiKey = "pk_live_5c219533c7e402d61a6ea9e3cfb44af0";
@@ -22,8 +23,11 @@ const Home: React.FC = () => {
   const [charities, setCharities] = useState<Charity[]>([]);
 
   const fetchInitialCharities = async () => {
+    const randomIndex = Math.floor(Math.random() * causes.length);
+    const randomElement = causes[randomIndex];
+
     const response = await axios.get<CharityResponse>(
-      `https://partners.every.org/v0.2/browse/dogs?apiKey=${apiKey}`
+      `https://partners.every.org/v0.2/browse/${randomElement}?apiKey=${apiKey}`
     );
     setCharities(response.data.nonprofits);
   };

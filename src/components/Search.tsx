@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { apiKey } from "./Home";
 
 interface Charity {
   logoUrl: string;
@@ -30,7 +31,7 @@ const Search: React.FC<SearchProps> = ({ setCharities }) => {
 
   const handleSearch = async () => {
     const charities = await fetchCharities(
-      `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=pk_live_2caf310116284beb94a622637fa432d0`
+      `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=${apiKey}`
     );
     setCharities(charities);
   };
@@ -39,7 +40,7 @@ const Search: React.FC<SearchProps> = ({ setCharities }) => {
     if (searchTerm.length >= 3) {
       const fetchSuggestions = async () => {
         const nonprofits = await fetchCharities(
-          `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=pk_live_2caf310116284beb94a622637fa432d0`
+          `https://partners.every.org/v0.2/search/${searchTerm}?apiKey=${apiKey}`
         );
         setSuggestions(nonprofits);
       };

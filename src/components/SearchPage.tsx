@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { apiKey } from "./Home";
+import { apiKey } from "./HomePage";
 
 interface Charity {
   logoUrl: string;

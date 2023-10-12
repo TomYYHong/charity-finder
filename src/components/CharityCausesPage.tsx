@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { apiKey } from "./Home";
+import { apiKey } from "./HomePage";
 
 interface CharityData {
   name: string;
@@ -21,6 +21,7 @@ export default function CharityCausesPage() {
   const [lists, setLists] = useState<CharityData[]>([]);
 
   useEffect(() => {
+    console.log("Props: "+props)
     axios
       .get<SearchResults>(
         `https://partners.every.org/v0.2/search/${props}?take=30&apiKey=${apiKey}`
@@ -34,7 +35,7 @@ export default function CharityCausesPage() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl pt-10 pl-6 tracking-wide font-semibold text-gray-800">
+      <h1 className="text-3xl pt-10 pl-6 tracking-wide font-semibold text-white">
         Search results for: {props}
       </h1>
       <div className="flex items-center my-10 w-full">
@@ -57,7 +58,7 @@ export default function CharityCausesPage() {
                   ) : (
                     <img
                       className="mr-3 w-12 h-12 rounded-full"
-                      src="../src/assets/donateLogo.svg"
+                      src="../src/assets/help.png"
                       alt="Default Logo"
                     />
                   )}
@@ -67,7 +68,7 @@ export default function CharityCausesPage() {
                 <span className="flex items-center">
                   <img
                     className="mr-2 w-5 h-5"
-                    src="../src/assets/location.svg"
+                    src="../src/assets/help.png"
                     alt="Location Icon"
                   />
                   {data.location ? (

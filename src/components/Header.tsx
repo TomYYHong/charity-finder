@@ -2,9 +2,9 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { causes } from "./causesList";
-import SearchBar from "./searchBar";
+import SearchBar from "./SearchBar";
 import help_icon from "../assets/help.png";
-import fav_icon from "../assets/fav-icon.png"
+import fav_icon from "../assets/fav-icon.png";
 
 export default function Header() {
   const [display, setDisplay] = useState<boolean>(false);
@@ -22,8 +22,7 @@ export default function Header() {
     setSearchInput(inputValue);
     const causesList = causes;
     if (causesList != null) {
-      const result = causesList
-        .filter((item) => item.includes(inputValue));
+      const result = causesList.filter((item) => item.includes(inputValue));
       setSearchList(result);
     }
   }
@@ -47,11 +46,16 @@ export default function Header() {
                 CharityFinder
               </span>
             </div>
-            </Link>
-            
-        <SearchBar showDropDown={showDropDown} handleChange={handleChange} searchInput={searchInput} display={display} searchList={searchList} />
-          
-          
+          </Link>
+
+          <SearchBar
+            showDropDown={showDropDown}
+            handleChange={handleChange}
+            searchInput={searchInput}
+            display={display}
+            searchList={searchList}
+          />
+
           <div className="flex mt-6 justify-center md:my-auto">
             <Link to="/favorites">
               <button
@@ -59,11 +63,7 @@ export default function Header() {
                 className="space-x-2 items-center border-0 rounded-full p-3 bg-neutral-600 hover:bg-[#bbb745] hover:brightness-100 duration-500"
               >
                 <div>
-                  <img
-                    src={fav_icon}
-                    className="w-10 h-fit"
-                    alt="Favorites"
-                  />
+                  <img src={fav_icon} className="w-10 h-fit" alt="Favorites" />
                 </div>
               </button>
             </Link>

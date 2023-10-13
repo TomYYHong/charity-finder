@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LocationIcon from "../assets/location-icon.png";
 
 export default function CharityDetail() {
   let navigate = useNavigate();
@@ -79,7 +80,7 @@ export default function CharityDetail() {
             {props.name}
           </h1>
           <div className="flex items-center my-6">
-            <img className="mr-2 w-5 h-5" src="../src/assets/location.svg" />
+            <img className="mr-2 w-5 h-5" src={LocationIcon} />
             {props.location ? <div>{props.location}</div> : <div>Unknown</div>}
           </div>
           <div className="w-full">

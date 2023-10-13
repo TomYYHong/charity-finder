@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Search from "./SearchPage";
 import { causes } from "./causesList";
 import { Card } from "./Card";
 
@@ -13,6 +12,7 @@ export interface Charity {
   description: string;
   ein: string;
   tags: string[];
+  location: string;
 }
 
 interface Response {
@@ -38,12 +38,25 @@ const Home: React.FC = () => {
 
   return (
     <div className="container place-self-center w-full">
-      <Search setCharities={setCharities} />
-      <div className="row flex flex-wrap place-content-evenly">
+      {/* <Search setCharities={setCharities} /> */}
+      <div className="row flex flex-wrap place-content-evenly w-full">
+        {/* {charities.map((charity, index) => (
+          <div className="flex flex-col place-content-center" key={index}>
+            <Card
+              logoUrl={charity.logoUrl}
+              coverImageUrl={charity.coverImageUrl}
+              name={charity.name}
+              description={charity.description}
+              ein={charity.ein}
+              location={charity.location}
+              tags={[]}
+            />
+          </div>
+        ))} */}
         {charities.map((charity, index) => (
           <div className="flex flex-col place-content-center" key={index}>
-            <Card logoUrl={charity.logoUrl} coverImageUrl={charity.coverImageUrl} name={charity.name} 
-            description={charity.description} ein={charity.ein} tags={[]} />
+            <Card charity={charity} id={index} />{" "}
+            {/* Pass the charity object as a prop */}
           </div>
         ))}
       </div>

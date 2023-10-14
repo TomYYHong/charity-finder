@@ -3,15 +3,17 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiKey } from "./HomePage";
+import { Card } from "./Card";
+import { Charity } from "./HomePage";
 
-interface CharityData {
-  name: string;
-  logoUrl?: string;
-  location?: string;
-}
+// interface CharityData {
+//   name: string;
+//   logoUrl?: string;
+//   location?: string;
+// }
 
 interface SearchResults {
-  nonprofits: CharityData[];
+  nonprofits: Charity[];
 }
 
 export default function CharityCausesPage() {
@@ -20,7 +22,7 @@ export default function CharityCausesPage() {
 
   console.log("props is: " + props);
 
-  const [lists, setLists] = useState<CharityData[]>([]);
+  const [lists, setLists] = useState<Charity[]>([]);
 
   useEffect(() => {
     // console.log("Props: " + props);

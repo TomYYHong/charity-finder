@@ -50,7 +50,7 @@ export const Card: FC<CardProps> = ({ charity, id }) => {
           {description}
         </p>
       </div>
-      <div className="flex flex-row items-center mpx-5">
+      <div className="flex flex-row items-center mpx-5 text-gray-600">
         <img className="h-10 aspect-auto " src={LocationIcon}></img>
         {location}
       </div>

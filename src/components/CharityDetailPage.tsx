@@ -146,7 +146,7 @@ export default function CharityDetail() {
                 rounded-full text-lg px-2 py-2 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 place-self-center font-bold duration-300 "
                 onClick={addFav}
               >
-                Added to your favorites
+                Add to your favorites
               </button>
             </a>
           ) : (
@@ -156,7 +156,7 @@ export default function CharityDetail() {
                 rounded-full text-lg px-2 py-2 text-center mb-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900 place-self-center font-bold duration-300 "
                 onClick={rmFav}
               >
-                Removed from your favorites
+                Remove from your favorites
               </button>
             </a>
           )}

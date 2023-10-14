@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import LocationIcon from "../assets/location-icon.png";
 import DefaultIcon from "../assets/help.png";
 import backButton from "../assets/backButton.png";
 import ComingSoonIcon from "../assets/comingsoon.png";
 
 export default function CharityDetail() {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const location = useLocation();
   const props = location.state.data;
   const [addBtn, setAddBtn] = useState(true);

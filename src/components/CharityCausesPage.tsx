@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiKey } from "./HomePage";
 import { Charity } from "./HomePage";
+import LocationIcon from "../assets/location-icon.png";
 
 // interface CharityData {
 //   name: string;
@@ -54,7 +55,7 @@ export default function CharityCausesPage() {
                 }}
                 // state={data}
                 key={id}
-                className="mt-5 px-5 py-5 w-full rounded-md bg-grey-700 shadow-lg hover:bg-grey-500"
+                className="mt-5 px-5 py-5 w-full rounded-md bg-grey-700 shadow-lg  hover:brigness-150 hover:drop-shadow(0 20px 20px rgb(0 0 0 / 0.08));"
               >
                 <span className="flex items-center text-lg font-semibold">
                   {data.logoUrl ? (
@@ -76,7 +77,7 @@ export default function CharityCausesPage() {
                 <span className="flex items-center">
                   <img
                     className="mr-2 w-5 h-5"
-                    src="../src/assets/help.png"
+                    src={LocationIcon}
                     alt="Location Icon"
                   />
                   {data.location ? (

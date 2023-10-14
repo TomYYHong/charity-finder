@@ -71,7 +71,7 @@ export default function CharityDetail() {
             >
               <img
                 src={backButton}
-                className="h-20"
+                className="h-20 hover:brightness-150 drop-shadow-[0_35px_35px_rgba(255, 255, 255)]"
                 alt="Go back to pervious page"
                 title="Go back to pervious page"
               ></img>
@@ -126,7 +126,7 @@ export default function CharityDetail() {
             <img className="mr-2 w-5 h-5" src={LocationIcon} />
             {props.location ? <div>{props.location}</div> : <div>Unknown</div>}
           </div>
-          <div className="w-full">
+          <div className="w-full h-fit">
             <p className="text-fit">{props.description}</p>
           </div>
         </div>

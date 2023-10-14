@@ -14,7 +14,8 @@ function App() {
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/search/:causes" element={<CharityCausesPage />} />
           <Route path="/charity/:id" element={<CharityDetailPage />} />
-          {/*<Route path="/404NotFound" element={<div>Page Not Found</div>} />
+          <Route path="/search/" element={<div>Page Not Found</div>} />
+          {/* <Route path="/NotFound" element={<div>Page Not Found</div>} />
           <Route path="*" element={<div>Page Not Found</div>} /> */}
         </Route>
       </Routes>

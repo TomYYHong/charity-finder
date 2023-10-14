@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import LocationIcon from "../assets/location-icon.png";
+import DefaultIcon from "../assets/help.png";
 
 interface CharityData {
   name: string;
@@ -40,7 +42,7 @@ export default function Favorite() {
                   from: "/favorites",
                 }}
                 key={id}
-                className="px-5 py-5 w-full rounded-md bg-white shadow-lg hover:bg-[#FBFBFB]"
+                className="px-5 py-5 w-full rounded-md bg-grey-700 shadow-lg hover:bg-grey-800"
               >
                 <span className="flex items-center text-lg font-semibold">
                   {data.logoUrl ? (
@@ -52,7 +54,7 @@ export default function Favorite() {
                   ) : (
                     <img
                       className="mr-3 w-12 h-12 rounded-full"
-                      src="./src/assets/donateLogo.svg"
+                      src={DefaultIcon}
                       alt="Default Logo"
                     />
                   )}
@@ -63,7 +65,7 @@ export default function Favorite() {
                 <span className="flex items-center">
                   <img
                     className="mr-2 w-5 h-5"
-                    src="./src/assets/location.svg"
+                    src={LocationIcon}
                     alt="Location Icon"
                   />
                   {data.location ? (

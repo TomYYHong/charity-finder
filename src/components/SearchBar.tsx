@@ -1,5 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { Link } from "react-router-dom";
+import searchIcon from "../assets/search-icon.png";
 
 interface SearchBarProps {
   showDropDown: () => void;
@@ -55,7 +56,7 @@ const SearchBar: FC<SearchBarProps> = ({
           <Link to={"/search/" + searchInput} state={searchInput}>
             <button type="button">
               <img
-                src="./src/assets/search-icon.png"
+                src={searchIcon}
                 className="w-5 h-5 place-self-center"
                 alt="Search"
               />

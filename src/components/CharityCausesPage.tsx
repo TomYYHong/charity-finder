@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { apiKey } from "./HomePage";
-import { Card } from "./Card";
 import { Charity } from "./HomePage";
 
 // interface CharityData {
@@ -19,6 +18,7 @@ interface SearchResults {
 export default function CharityCausesPage() {
   const location = useLocation();
   const props: string = location.state as string;
+  const currentRoute = location.pathname;
 
   console.log("props is: " + props);
 
@@ -40,7 +40,7 @@ export default function CharityCausesPage() {
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl pt-10 pl-6 tracking-wide font-semibold text-white">
-        Search results for: {props}
+        Search results for: {currentRoute.replace("/search/", "")}
       </h1>
       <div className="flex items-center my-10 w-full">
         {lists.length > 0 ? (
@@ -50,11 +50,11 @@ export default function CharityCausesPage() {
                 to={`/charity/${data.name}`}
                 state={{
                   data: data,
-                  from: "/search/" + { props },
+                  from: currentRoute,
                 }}
                 // state={data}
                 key={id}
-                className="mt-5 px-5 py-5 w-full rounded-md bg-white shadow-lg hover:bg-[#FBFBFB]"
+                className="mt-5 px-5 py-5 w-full rounded-md bg-grey-700 shadow-lg hover:bg-grey-500"
               >
                 <span className="flex items-center text-lg font-semibold">
                   {data.logoUrl ? (

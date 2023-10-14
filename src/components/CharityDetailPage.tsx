@@ -4,21 +4,21 @@ import { useNavigate } from "react-router-dom";
 import LocationIcon from "../assets/location-icon.png";
 import DefaultIcon from "../assets/help.png";
 import backButton from "../assets/backButton.png";
+import ComingSoonIcon from "../assets/comingsoon.png";
 
 export default function CharityDetail() {
   let navigate = useNavigate();
   const location = useLocation();
-  const props = location.state;
+  const props = location.state.data;
   const [addBtn, setAddBtn] = useState(true);
   const [msg, setMsg] = useState(false);
 
   const data = localStorage.getItem("favoriteList");
   const cacheData = data ? JSON.parse(data) : [];
 
-  const preLocation = props.from as string;
-  console.log(
-    "detail page recieved prev page is: " + JSON.stringify(preLocation, null, 2)
-  );
+  const preLocation = location.state.from;
+  // const preLocation = localStorage.getItem("path");
+  console.log("detail page recieved prev page is: " + preLocation);
 
   useEffect(() => {
     const data = localStorage.getItem("favoriteList");
@@ -69,7 +69,12 @@ export default function CharityDetail() {
             <button
               onClick={() => console.log("preLocation value:", preLocation)}
             >
-              <img src={backButton}></img>
+              <img
+                src={backButton}
+                className="h-20"
+                alt="Go back to pervious page"
+                title="Go back to pervious page"
+              ></img>
             </button>
           </Link>
         ) : (
@@ -82,7 +87,12 @@ export default function CharityDetail() {
                 )
               }
             >
-              <img src={backButton}></img>
+              <img
+                src={backButton}
+                className="h-20"
+                alt="Go back to pervious page"
+                title="Go back to pervious page"
+              ></img>
             </button>
           </Link>
         )}
@@ -94,9 +104,16 @@ export default function CharityDetail() {
           {props.name}
         </h1>
         <div className="col-span-2 rounded-md shadow-md">
-          <div>
-            <img className="rounded-t-lg" src={props.coverImageUrl} />
-          </div>
+          {props.coverImageUrl ? (
+            <div>
+              <img className="rounded-t-lg" src={props.coverImageUrl} />
+            </div>
+          ) : (
+            <div>
+              <img className="rounded-t-lg" src={ComingSoonIcon} />
+            </div>
+          )}
+
           <div className="flex items-center my-6">
             {props.logoUrl ? (
               <img

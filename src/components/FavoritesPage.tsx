@@ -9,7 +9,6 @@ interface CharityData {
 
 export default function Favorite() {
   const [favItems, setFavItems] = useState<CharityData[]>([]);
-  const [show, setShow] = useState<boolean>(false);
   const [check, setCheck] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function Favorite() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl pt-10 pl-6 tracking-wide font-semibold text-gray-800">
+      <h1 className="text-3xl pt-10 pl-6 tracking-wide font-semibold text-white">
         Favorite
       </h1>
       <div className="flex items-center my-10">
@@ -35,7 +34,11 @@ export default function Favorite() {
             {favItems.map((data, id) => (
               <Link
                 to={`/charity/${data.name}`}
-                state={data}
+                // state={data}
+                state={{
+                  data: data,
+                  from: "/favorites",
+                }}
                 key={id}
                 className="px-5 py-5 w-full rounded-md bg-white shadow-lg hover:bg-[#FBFBFB]"
               >

@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Charity } from "./HomePage";
 import { Link } from "react-router-dom";
 import LocationIcon from "../assets/location-icon.png";
+import DefaultIcon from "../assets/help.png";
+import ComingSoonIcom from "../assets/comingsoon.png";
 
 interface CardProps {
   charity: Charity; // Define a prop called 'charity' of type 'Charity'
@@ -26,8 +28,17 @@ export const Card: FC<CardProps> = ({ charity, id }) => {
     //     <img src={logoUrl}></img>
     // </div>
     <div className="max-w-sm bg-white border border-gray-200  opacity-90  rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-h-120 h-full my-2 mx-1 flex flex-col">
-      <img className="rounded-full absolute border-2 " src={logoUrl} alt="" />
-      <img className="h-40 w-full aspect-auto " src={coverImageUrl}></img>
+      {/* <img className="rounded-full absolute border-2 " src={logoUrl} alt="" /> */}
+      {logoUrl ? (
+        <img className="rounded-full absolute border-2" src={logoUrl} />
+      ) : (
+        <img className="rounded-full absolute border-2" src={DefaultIcon} />
+      )}
+      {coverImageUrl ? (
+        <img className="h-40 w-full aspect-auto " src={coverImageUrl}></img>
+      ) : (
+        <img className="h-40 w-full aspect-auto " src={ComingSoonIcom}></img>
+      )}
       <div className="p-5">
         <h5
           className="mb-2 text-2xl font-bold tracking-tight text-gray-900
@@ -45,7 +56,11 @@ export const Card: FC<CardProps> = ({ charity, id }) => {
       </div>
       <Link
         to={"/charity/" + name}
-        state={charity}
+        // state={charity}
+        state={{
+          data: charity,
+          from: "/",
+        }}
         key={id}
         className="flex place-self-center"
       >

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LocationIcon from "../assets/location-icon.png";
+import DefaultIcon from "../assets/help.png";
+import backButton from "../assets/backButton.png";
 
 export default function CharityDetail() {
   let navigate = useNavigate();
@@ -12,6 +14,11 @@ export default function CharityDetail() {
 
   const data = localStorage.getItem("favoriteList");
   const cacheData = data ? JSON.parse(data) : [];
+
+  const preLocation = props.from as string;
+  console.log(
+    "detail page recieved prev page is: " + JSON.stringify(preLocation, null, 2)
+  );
 
   useEffect(() => {
     const data = localStorage.getItem("favoriteList");
@@ -55,31 +62,50 @@ export default function CharityDetail() {
   }
 
   return (
-    <div className="container justify-center mb-8 px-4 grid grid-cols-1 gap-8 mx-auto sm:grid-cols-1 md:grid-cols-3 mt-10">
-      <div className="col-span-2 rounded-md shadow-md">
-        <div>
-          <img className="rounded-t-lg" src={props.coverImageUrl} />
-        </div>
-        <div className="p-8">
-          <h1
-            className={
-              "flex flex-wrap justify-center items-center text-3xl tracking-wide font-semibold text-gray-800 md:justify-normal"
-            }
-          >
+    <div className="container justify-center mb-8 px-4  gap-8 mx-auto sm:grid-cols-1 md:grid-cols-3 mt-10 flex flex-col">
+      <div className="p-8">
+        {preLocation ? (
+          <Link to={preLocation}>
+            <button
+              onClick={() => console.log("preLocation value:", preLocation)}
+            >
+              <img src={backButton}></img>
+            </button>
+          </Link>
+        ) : (
+          <Link to="/">
+            <button
+              onClick={() =>
+                console.log(
+                  "preLocation value without prePage value:",
+                  preLocation
+                )
+              }
+            >
+              <img src={backButton}></img>
+            </button>
+          </Link>
+        )}
+        <h1
+          className={
+            "flex flex-wrap justify-center items-center text-3xl tracking-wide font-semibold text-white md:justify-normal"
+          }
+        >
+          {props.name}
+        </h1>
+        <div className="col-span-2 rounded-md shadow-md">
+          <div>
+            <img className="rounded-t-lg" src={props.coverImageUrl} />
+          </div>
+          <div className="flex items-center my-6">
             {props.logoUrl ? (
               <img
                 className="mr-3 mb-3 rounded-full md:mb-0"
                 src={props.logoUrl}
               />
             ) : (
-              <img
-                className="mr-3 w-12 h-12 rounded-full"
-                src="../src/assets/donateLogo.svg"
-              />
+              <img className="mr-3 w-12 h-12 rounded-full" src={DefaultIcon} />
             )}
-            {props.name}
-          </h1>
-          <div className="flex items-center my-6">
             <img className="mr-2 w-5 h-5" src={LocationIcon} />
             {props.location ? <div>{props.location}</div> : <div>Unknown</div>}
           </div>
@@ -99,41 +125,46 @@ export default function CharityDetail() {
           {addBtn ? (
             <a>
               <button
-                className="w-full bg-[#F14040] rounded-sm py-4 text-white font-bold hover:bg-[#D31616] duration-300"
+                className=" w-full text-white bg-purple-700 hover:bg-purple-800 focus:white focus:ring-4 focus:ring-purple-300 
+                rounded-full text-lg px-2 py-2 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 place-self-center font-bold duration-300 "
                 onClick={addFav}
               >
-                Add to favorites
+                Added to your favorites
               </button>
             </a>
           ) : (
             <a>
               <button
-                className="w-full bg-[#2D59AF] rounded-sm py-4 text-white font-bold hover:bg-[#0F3D97] duration-300"
+                className=" w-full text-white bg-pink-700 hover:bg-pink-800 focus:white focus:ring-4 focus:ring-pink-300 
+                rounded-full text-lg px-2 py-2 text-center mb-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900 place-self-center font-bold duration-300 "
                 onClick={rmFav}
               >
-                Remove from favorites
+                Removed from your favorites
               </button>
             </a>
           )}
         </div>
         <div className="mt-4">
           <a href={props.profileUrl} target="_blank">
-            <button className="w-full bg-emerald-800 rounded-sm py-4 text-white font-bold hover:bg-emerald-950 duration-300">
+            <button
+              className=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:white focus:ring-4 focus:ring-blue-300 
+                rounded-full text-lg px-2 py-2 text-center mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 place-self-center font-bold duration-300 "
+            >
               Check it in Every.org
             </button>
           </a>
         </div>
         <div className="mt-2 flex flex-wrap">
           {props.tags && (
-            <div className="mt-6">
-              <span className="font-semibold text-lg">Tag:</span>
+            <div className="mt-6 flex flex-col">
+              <div className="font-semibold text-lg">Tag:</div>
               <div className="flex flex-wrap mt-1">
                 {props.tags.map((data: string, id: string) => (
                   <Link
                     to={"/search/" + data}
                     state={data}
                     key={id}
-                    className="bg-slate-500 text-white px-3 py-2 m-2 rounded-3xl shadow-md hover:bg-slate-600 duration-300"
+                    className="bg-purple-800 text-white px-4 py-4 m-3 rounded-3xl shadow-md hover:bg-purple-900 duration-300"
                   >
                     {data}
                   </Link>

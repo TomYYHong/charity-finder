@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header>
-      <nav className="py-6 bg-[#6d95bb]">
+      <nav className="py-6 bg-purple-700">
         <div className="container mx-auto items-center justify-around md:flex md:flex-wrap">
           <Link to="/">
             <div className="flex justify-center w-20 items-center ">

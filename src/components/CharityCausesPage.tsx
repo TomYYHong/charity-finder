@@ -18,10 +18,12 @@ export default function CharityCausesPage() {
   const location = useLocation();
   const props: string = location.state as string;
 
+  console.log("props is: " + props);
+
   const [lists, setLists] = useState<CharityData[]>([]);
 
   useEffect(() => {
-    console.log("Props: "+props)
+    // console.log("Props: " + props);
     axios
       .get<SearchResults>(
         `https://partners.every.org/v0.2/search/${props}?take=30&apiKey=${apiKey}`
@@ -44,7 +46,11 @@ export default function CharityCausesPage() {
             {lists.map((data, id) => (
               <Link
                 to={`/charity/${data.name}`}
-                state={data}
+                state={{
+                  data: data,
+                  from: "/search/" + { props },
+                }}
+                // state={data}
                 key={id}
                 className="mt-5 px-5 py-5 w-full rounded-md bg-white shadow-lg hover:bg-[#FBFBFB]"
               >

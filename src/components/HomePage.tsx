@@ -3,11 +3,7 @@ import axios from "axios";
 import { causes } from "./causesList";
 import { Card } from "./Card";
 
-// export const apiKey = "pk_live_5c219533c7e402d61a6ea9e3cfb44af0";
-
-// export const apiKey = import.meta.env.API_KEY
-
-export const apiKey = process.env.API_KEY;
+export const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
 export interface Charity {
   logoUrl: string;

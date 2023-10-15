@@ -1,7 +1,7 @@
 # React + TypeScript + Tailwindcss + every.org API
 
-A website help you to find the charity you interested on 
-https://charity-finder-tomhong.netlify.app/charity/Project%20HOPE
+A website help you to find the charity you interested in!
+https://charity-finder-tomhong.netlify.app/
 
 ![image](https://github.com/TomYYHong/charity-finder/assets/56811243/9024cee2-846f-460b-9b68-d7c6a7a89d0c)
 
